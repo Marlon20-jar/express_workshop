@@ -4,7 +4,7 @@ const user = express.Router();
 const db = require('../config/database');
 const { use } = require('./pokemon');
 
-user.post("/singnin", async (req, res, next) => {
+user.post("/signin", async (req, res, next) => {
     const { user_name, user_mail, user_password } = req.body
 
     if(user_name && user_mail && user_password){ 
@@ -34,7 +34,7 @@ user.post("/login", async (req, res, next) => {
             return res.status(200).json({ code: 200, message: token });
         }
         else{
-            return res.status(200).json({ code: 200, message: "Usuario y/o contraseña incorrectos" });
+            return res.status(200).json({ code: 401, message: "Usuario y/o contraseña incorrectos" });
         }
    }
    return res.status(500).json({ code: 500, message: "Campos incompletos" });
